@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment variables - NEVER commit secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Judge temp execution files (created/deleted at runtime, never commit)
+judge/temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
