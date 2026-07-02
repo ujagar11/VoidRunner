@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getAllProblems } from "./problemApi";
+import { getMySubmissions } from "../dashboard/dashboardApi";
 
 const difficultyStyles = {
   Easy: "bg-green-900/40 text-green-400 border border-green-700/40",
@@ -33,7 +34,14 @@ const ProblemListPage = () => {
       (statusFilter === "Unsolved" && !p.solved);
     return matchSearch && matchDiff && matchStatus;
   });
-
+  const [submissions, setSubmissions] = useState([]);
+  useEffect(() => {
+    getMySubmissions()
+      .then(setSubmissions)
+      .catch(() => setSubmissions([]))
+      .finally(() => setLoading(false));
+  }, []);
+  const solved = submissions.filter((s) => s.verdict === "Accepted").length;
   return (
     <div className="min-h-screen bg-[#0d1117] pt-28 px-6">
       <div className="max-w-5xl mx-auto">
@@ -47,15 +55,15 @@ const ProblemListPage = () => {
             &gt;_ Pick a problem. Write your solution. Let the judge decide.
           </p>
 
-          <div className="inline-flex items-center gap-3 bg-[#161b22] border border-[#21262d] rounded-xl px-4 py-3 mb-8">
-            <div className="w-8 h-8 rounded-full border-2 border-[#6d5ef7] flex items-center justify-center">
-              <span className="text-[#6d5ef7] text-xs">✓</span>
-            </div>
+           <div className="inline-flex items-center gap-3 bg-[#161b22] border border-[#21262d] rounded-xl px-4 py-3 mb-8">
+            {/* <div className="w-8 h-8 rounded-full border-2 border-[#6d5ef7] flex items-center justify-center">
+              <span className="text-[#6d5ef7] text-xs">-</span>
+            </div> */}
             <div>
-              <p className="text-white font-semibold">{problems.length}</p>
-              <p className="text-[#8b949e] text-xs">Problems Available</p>
+              <p className="text-white font-semibold">{solved}/{problems.length}</p>
+              <p className="text-[#6d5ef7] text-xs">Problems Solved</p>
             </div>
-          </div>
+          </div> 
 
           <div className="flex flex-wrap gap-3 mb-4">
             <input

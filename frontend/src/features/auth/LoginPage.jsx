@@ -37,7 +37,7 @@ const LoginPage = () => {
         className="w-full max-w-sm bg-[#161b22] border border-[#21262d] rounded-xl p-8"
       >
         <div className="flex items-center gap-2 mb-8">
-          <span className="text-[#6d5ef7] font-mono font-bold">&gt;_</span>
+          <span className="text-[#6d5ef7] font-mono font-bold">.</span>
          <span className="text-white font-bold">VoidRunner</span>
         </div>
 

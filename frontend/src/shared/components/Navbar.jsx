@@ -16,7 +16,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between bg-[#161b22] border border-[#21262d] rounded-xl px-6 py-3">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-[#6d5ef7] font-mono text-lg font-bold">&gt;_</span>
+          <span className="text-[#6d5ef7] font-mono text-lg font-bold">.</span>
           <span className="text-white font-bold text-lg">VoidRunner</span>
         </Link>
 
@@ -38,9 +38,9 @@ const Navbar = () => {
                 className="flex items-center gap-2 text-sm text-[#8b949e] hover:text-white transition-colors"
               >
                 <div className="w-8 h-8 rounded-full bg-[#6d5ef7] flex items-center justify-center text-white text-xs font-bold">
-                  {user?.username?.[0]?.toUpperCase()}
+                  {user?.userName?.[0]?.toUpperCase()}
                 </div>
-                <span>{user?.username}</span>
+                <span>{user?.userName}</span>
               </Link>
               <button
                 onClick={handleLogout}
@@ -70,5 +70,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;

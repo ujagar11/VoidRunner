@@ -6,7 +6,7 @@ const { aiReviewLimiter } = require("../middleware/rateLimiter");
 
 const router = express.Router();
 
-// ⚠️ /me MUST come before /:id, otherwise Express treats "me" as a submission ID
+
 router.get("/submissions/me", authMiddleware, async (req, res) => {
   try {
     const submissions = await Submission.find({ userId: req.user.id })
