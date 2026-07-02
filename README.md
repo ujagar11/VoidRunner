@@ -1,4 +1,4 @@
-# GhoulOJ
+# VoidRunner
 
 A full-stack online judge built with the MERN stack. Write code, run it against test cases in an isolated Docker sandbox, get an instant verdict, and even ask an AI to review your solution — all from a LeetCode-style problem page.
 
