@@ -23,7 +23,7 @@ A full-stack online judge built with the MERN stack. Write code, run it against 
 ## Project structure
 
 ```
-GhoulOJ/
+VoidRunner/
 ├── backend/
 │   ├── controller/        # request handlers (auth, problems, submissions)
 │   ├── model/              # Mongoose schemas (User, Problem, Submission)
