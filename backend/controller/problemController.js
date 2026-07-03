@@ -1,7 +1,6 @@
 const Problem = require("../model/Problem");
 const AuthUser = require("../model/authUser");
 
-// GET /problems - lightweight list, with solved status if logged in
 const getAllProblems = async (req, res) => {
   try {
     const problems = await Problem.find().select("title difficulty");
@@ -25,7 +24,6 @@ const getAllProblems = async (req, res) => {
   }
 };
 
-// GET /problems/:id - full detail, hidden test cases stripped
 const getProblemById = async (req, res) => {
   try {
     const problem = await Problem.findById(req.params.id);
@@ -44,9 +42,13 @@ const getProblemById = async (req, res) => {
   }
 };
 
-// POST /problems - unprotected for now, just for seeding via Postman
 const createProblem = async (req, res) => {
   try {
+    // simple admin key check until proper roles are built
+    if (req.headers["x-admin-key"] !== process.env.ADMIN_KEY) {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+
     const problem = await Problem.create(req.body);
     res.status(201).json(problem);
   } catch (error) {
